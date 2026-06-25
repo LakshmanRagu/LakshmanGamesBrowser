@@ -1,0 +1,101 @@
+================================================================================
+           RETRO PORTFOLIO HUB - USER CUSTOMIZATION & CONFIGURATION GUIDE
+================================================================================
+
+This document provides instructions on how to customize your retro portfolio hub 
+(retro_hub3.html) by adding new games, modifying visual effects, tuning the 
+Gamer RGB Mode, or setting custom colors.
+
+To make editing easy, all main settings have been organized into a single global 
+CONFIG object at the very top of the script section inside `retro_hub3.html`.
+
+
+--------------------------------------------------------------------------------
+1. ADDING OR MODIFYING GAMES
+--------------------------------------------------------------------------------
+To add a new game or edit an existing one, look for the header comment:
+`// >>> 1. ADD NEW GAMES HERE! <<<`
+inside the `CONFIG` object at the top of the `<script>` tag in `retro_hub3.html`.
+
+Each game is represented as an object with the following fields:
+
+- `id`: A unique string identifier (e.g. "my-awesome-game").
+- `title`: The display name of the game in all-caps (e.g. "MY AWESOME GAME").
+- `thumbnail`: A URL to the cover/thumbnail image. (Tip: Leave as empty string "" if you want the hub to automatically fetch the cover image from the itch.io pageUrl for you!).
+- `type`: Either "webgl" (for browser-playable games) or "download" (for other games).
+- `embedUrl`: (Only for webgl games) The direct itch.io iframe/embed upload link.
+- `pageUrl`: The public itch.io game page URL.
+- `views`: Custom view count or placeholder stats (e.g. "1.5K").
+- `tag`: The category tag shown on the card (e.g. "Action", "Platformer").
+
+EXAMPLE FOR ADDING A WEBGL GAME:
+```javascript
+{ 
+    id: "my-web-game", 
+    title: "MY WEB GAME", 
+    thumbnail: "https://img.itch.zone/...", 
+    type: "webgl", 
+    embedUrl: "https://itch.io/embed-upload/...", 
+    pageUrl: "https://user.itch.io/my-web-game", 
+    views: "150", 
+    tag: "Puzzle" 
+}
+```
+
+EXAMPLE FOR ADDING A DOWNLOADABLE GAME:
+```javascript
+{ 
+    id: "my-download-game", 
+    title: "MY DOWNLOAD GAME", 
+    thumbnail: "https://img.itch.zone/...", 
+    type: "download", 
+    pageUrl: "https://user.itch.io/my-download-game", 
+    views: "340", 
+    tag: "RPG" 
+}
+```
+
+
+--------------------------------------------------------------------------------
+2. CUSTOMIZING VISUAL EFFECTS (VFX)
+--------------------------------------------------------------------------------
+You can change the behavior and quantity of visual effects in the `vfx` block 
+inside the `CONFIG` object:
+
+- `stars`: Set to `true` or `false` to turn the background starry sky on/off by default.
+- `particles`: Set to `true` or `false` to turn the floating purple ember particles on/off by default.
+- `trail`: Set to `true` or `false` to turn the mouse tail sparkle on/off by default.
+- `burst`: Set to `true` or `false` to turn click-burst sparkles on/off by default.
+- `starCount`: The total number of background stars generated (default: 150).
+- `particleCount`: The total number of floating purple particles generated (default: 35).
+- `burstCount`: The number of sparks emitted when you click on the page (default: 12).
+
+
+--------------------------------------------------------------------------------
+3. TUNING GAMER RGB MODE (RAINBOW SPECTRUM WAVE)
+--------------------------------------------------------------------------------
+The addressable RGB mode is modulated dynamically using HSL phase offsets. You can 
+tune these in the `rgbMode` block inside the `CONFIG` object:
+
+- `defaultSpeed`: The initial cycle speed (default: 3). High values make it rotate faster.
+- `intervalMs`: Frame cycle refresh rate in milliseconds (default: 25ms, which is ~40 FPS).
+- `offsets`:
+  - `zone1` (default: 0): Hue offset (in degrees) for the primary elements (card borders, buttons, main headers).
+  - `zone2` (default: 90): Hue offset for the secondary accents (sidebar hovered links, tags, and stats).
+  - `zone3` (default: 180): Hue offset for the Enderman glowing eye color.
+  - `zone4` (default: 270): Hue offset for the void background overlay glow.
+
+Changing these offsets allows you to customize how the color gradient transitions 
+across the page, creating custom wave offsets!
+
+
+--------------------------------------------------------------------------------
+4. TROUBLESHOOTING EMBED / LOCAL CACHING
+--------------------------------------------------------------------------------
+- If you run the file locally in your browser, some settings might not save or 
+  console warnings might appear if you have a security block on local storage. 
+  The codebase includes an automatic fallback system (`Storage`) that handles 
+  this by automatically falling back to session storage or in-memory variables.
+- Game frames use inline `onload` listeners so cached content won't get stuck 
+  on the loading indicator. If you modify the iframe markup, preserve the 
+  `onload` and `allow` permissions to maintain compatibility.
