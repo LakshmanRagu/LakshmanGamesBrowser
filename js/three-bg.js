@@ -122,6 +122,22 @@ function initThreeJSBackground() {
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
     });
+
+    // Global color update function
+    window.updateThreeParticlesColor = function(hex) {
+        if (!particlesGeometry) return;
+        const color1 = new THREE.Color(hex);
+        const color2 = new THREE.Color('#00d4ff'); // keep cyan as secondary or derive from hex
+        const colors = particlesGeometry.attributes.color.array;
+        
+        for(let i = 0; i < particlesCount * 3; i+=3) {
+            const mixedColor = color1.clone().lerp(color2, Math.random());
+            colors[i] = mixedColor.r;
+            colors[i+1] = mixedColor.g;
+            colors[i+2] = mixedColor.b;
+        }
+        particlesGeometry.attributes.color.needsUpdate = true;
+    };
 }
 
 // Initialize when DOM is ready

@@ -479,6 +479,11 @@
             document.documentElement.style.setProperty('--theme-s', hsl.s + '%');
             document.documentElement.style.setProperty('--theme-l', hsl.l + '%');
 
+            // Update 3D particles if available
+            if (window.updateThreeParticlesColor) {
+                window.updateThreeParticlesColor(hex);
+            }
+
             // Update UI swatches
             document.querySelectorAll('.color-swatch').forEach(sw => sw.classList.remove('active'));
             const customPickerBtn = document.getElementById('custom-color-picker-btn');
