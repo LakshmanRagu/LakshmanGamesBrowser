@@ -32,7 +32,10 @@
                 { id: "blast-rock", title: "BLAST ROCK", thumbnail: "https://img.itch.zone/aW1nLzI2NTYwODgwLnBuZw==/original/yr7Cwf.png", type: "download", pageUrl: "https://itch.io/jam/portfolio-builders-jam-week-67/rate/4455852", views: "450", tag: "Shooter" },
                 { id: "welcome-back", title: "WELCOME BACK", thumbnail: "https://img.itch.zone/aW1nLzI0MzIwMzE0LmpwZw==/original/HDeO4o.jpg", type: "download", pageUrl: "https://reirann.itch.io/welcome-back", views: "3.1K", tag: "Adventure" },
                 { id: "grow-a-city", title: "GROW A CITY", thumbnail: "https://img.itch.zone/aW1nLzI2MjYzNzk4LmpwZWc=/original/aD%2BjHl.jpeg", type: "download", pageUrl: "https://reirann.itch.io/grow-a-city", views: "900", tag: "Strategy" },
-                { id: "parking-lot", title: "ESCAPE PARKING LOT", thumbnail: "https://img.itch.zone/aW1nLzI2NjYwMTE2LnBuZw==/original/2O2isW.png", type: "download", pageUrl: "https://jeiz.itch.io/escape-the-parking-lot", views: "1.5K", tag: "Combat" }
+                { id: "parking-lot", title: "ESCAPE PARKING LOT", thumbnail: "https://img.itch.zone/aW1nLzI2NjYwMTE2LnBuZw==/original/2O2isW.png", type: "download", pageUrl: "https://jeiz.itch.io/escape-the-parking-lot", views: "1.5K", tag: "Combat" },
+                { id: "ruins-of-the-old-world", title: "RUINS OF THE OLD WORLD", thumbnail: "https://img.itch.zone/aW1nLzI5MzMzNDEwLnBuZw==/original/XjYcZc.png", type: "download", pageUrl: "https://lakshmanragu.itch.io/ruins-of-the-old-world", views: "New", tag: "Adventure" },
+                { id: "beach-side-restaurant", title: "BEACH SIDE RESTAURANT", thumbnail: "https://img.itch.zone/aW1hZ2UvNDg4NTkzNi8yOTIwMzEzNy5wbmc=/original/nZrGsx.png", type: "download", pageUrl: "https://lakshmanragu.itch.io/beach-side-restaurant", views: "New", tag: "Simulation" },
+                { id: "gdknight-the-1st", title: "GDKNIGHT THE 1ST", thumbnail: "https://img.itch.zone/aW1nLzI5MDg4MTk1LnBuZw==/original/sn4VeQ.png", type: "download", pageUrl: "https://lakshmanragu.itch.io/gdknight-the-1st", views: "New", tag: "Action" }
             ],
 
             // Default states and quantities for visual effects
