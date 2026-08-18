@@ -69,12 +69,12 @@
             <a id="nav-portfolio" href="https://lakshmanragu.github.io/lakshman_portfolio.github.io/" target="_blank"><i
                     class="fa-solid fa-user-astronaut"></i> >> MY PORTFOLIO</a>
             <br>
-            <div style="padding: 0 20px; color: var(--main-color); font-size: 14px; margin-bottom: 10px;">LIBRARY</div>
+            <div style="padding: 0 20px; color: var(--main-color); font-size: 9px; margin-bottom: 10px;">LIBRARY</div>
             <a id="nav-recent" onclick="scrollToSection('section-recent')"><i class="fa-solid fa-clock"></i> >> RECENTLY
                 VIEWED</a>
             <a id="nav-fav" onclick="scrollToSection('section-fav')"><i class="fa-solid fa-star"></i> >> FAVORITES</a>
             <br>
-            <div style="padding: 0 20px; color: var(--main-color); font-size: 14px; margin-bottom: 10px;">SYSTEM</div>
+            <div style="padding: 0 20px; color: var(--main-color); font-size: 9px; margin-bottom: 10px;">SYSTEM</div>
             <a id="nav-settings" onclick="switchView('settings')"><i class="fa-solid fa-gear"></i> >> SETTINGS</a>
             <a id="nav-about" onclick="switchView('about')"><i class="fa-solid fa-user"></i> >> ABOUT ME</a>
         </aside>
@@ -110,7 +110,7 @@
             <!-- SETTINGS VIEW -->
             <div id="view-settings" class="hidden">
                 <h1
-                    style="color: #fff; font-size: 24px; font-weight: 700; margin-bottom: 30px; text-shadow: 2px 2px 0 var(--main-color);">
+                    style="color: var(--main-color); font-size: 14px; font-weight: 700; margin-bottom: 30px;">
                     >> SYSTEM PREFERENCES
                 </h1>
 
@@ -144,13 +144,13 @@
                     <div>
                         <h2 class="section-title" style="border:none; margin-bottom: 10px;"><i
                                 class="fa-solid fa-palette"></i> THEME COLOR</h2>
-                        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Select your core
+                        <p style="color: var(--text-muted); font-size: 9px; margin-bottom: 20px;">Select your core
                             system accent color.</p>
                         <div
                             style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
                             <div class="color-palette">
-                                <div class="color-swatch active" style="background: #ff007f; color: #ff007f;"
-                                    onclick="setThemeColor('#ff007f', this)"></div>
+                                <div class="color-swatch active" style="background: #ff00ff; color: #ff00ff;"
+                                    onclick="setThemeColor('#ff00ff', this)"></div>
                                 <div class="color-swatch" style="background: #00d4ff; color: #00d4ff;"
                                     onclick="setThemeColor('#00d4ff', this)"></div>
                                 <div class="color-swatch" style="background: #00ff00; color: #00ff00;"
@@ -166,7 +166,7 @@
                                     <input type="color" id="custom-color-picker"
                                         oninput="setThemeColor(this.value, null)">
                                 </div>
-                                <span style="font-size: 14px; color: var(--text-bright);">CUSTOM WHEEL</span>
+                                <span style="font-size: 9px; color: var(--text-bright);">CUSTOM WHEEL</span>
                             </div>
                         </div>
                         <div class="setting-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
@@ -179,6 +179,34 @@
                             <input type="range" min="1" max="10" value="3" class="retro-slider" id="rgb-speed-slider"
                                 oninput="updateRGBSpeed(this.value)" style="width: 120px;">
                         </div>
+
+                        <h2 class="section-title" style="border:none; margin-top: 40px; margin-bottom: 10px;"><i
+                                class="fa-solid fa-fill-drip"></i> BACKGROUND COLOR</h2>
+                        <p style="color: var(--text-muted); font-size: 9px; margin-bottom: 20px;">Select your core
+                            system background color.</p>
+                        <div
+                            style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 25px;">
+                            <div class="color-palette" id="bg-palette">
+                                <div class="color-swatch active" style="background: #0f172a; color: #0f172a;"
+                                    onclick="setBgColor('#0f172a', this)"></div>
+                                <div class="color-swatch" style="background: #000000; color: #000000;"
+                                    onclick="setBgColor('#000000', this)"></div>
+                                <div class="color-swatch" style="background: #1a1a1a; color: #1a1a1a;"
+                                    onclick="setBgColor('#1a1a1a', this)"></div>
+                                <div class="color-swatch" style="background: #051410; color: #051410;"
+                                    onclick="setBgColor('#051410', this)"></div>
+                                <div class="color-swatch" style="background: #1e051c; color: #1e051c;"
+                                    onclick="setBgColor('#1e051c', this)"></div>
+                            </div>
+                            <div style="border-left: 2px dashed #333; height: 30px;"></div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="color-wheel-picker" id="bg-color-picker-btn">
+                                    <input type="color" id="bg-color-picker"
+                                        oninput="setBgColor(this.value, null)">
+                                </div>
+                                <span style="font-size: 9px; color: var(--text-bright);">CUSTOM WHEEL</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -186,7 +214,7 @@
             <!-- ABOUT VIEW -->
             <div id="view-about" class="hidden">
                 <h1
-                    style="color: #fff; font-size: 24px; font-weight: 700; margin-bottom: 30px; text-shadow: 2px 2px 0 var(--main-color);">
+                    style="color: var(--main-color); font-size: 14px; font-weight: 700; margin-bottom: 30px;">
                     >> ABOUT ME
                 </h1>
 
@@ -194,12 +222,12 @@
                     <h2 class="section-title" style="border:none; margin-bottom: 15px;"><i
                             class="fa-solid fa-address-card"></i> BIOGRAPHY</h2>
                     <p
-                        style="color: var(--text-dim); line-height: 2; margin-bottom: 15px; font-size: 16px; ">
+                        style="color: var(--text-dim); line-height: 2; margin-bottom: 15px; font-size: 10px; ">
                         HELLO! I AM <strong style="color: var(--main-color);">LAKSHMAN NARAIN RAGUBATHY</strong>. I AM A
                         GAME DEVELOPER AND 3D ARTIST PASSIONATE ABOUT CREATING IMMERSIVE RETRO-STYLED GAMES, 3D ASSETS,
                         AND INTERACTIVE EXPERIENCES.
                     </p>
-                    <p style="color: var(--text-muted); font-size: 14px; ">
+                    <p style="color: var(--text-muted); font-size: 9px; ">
                         FEEL FREE TO BROWSE MY EXPERIMENTS HERE OR GET IN TOUCH VIA THE CONTACT LINKS BELOW.
                     </p>
                 </div>
@@ -272,7 +300,7 @@
 
             <!-- FOOTER -->
             <footer class="footer-copyright"
-                style="text-align: center; margin-top: 60px; padding: 25px 0 10px 0; border-top: 2px dashed var(--main-color); font-size: 14px; color: var(--text-muted); line-height: 1.6; transition: border-color 0.3s;">
+                style="text-align: center; margin-top: 60px; padding: 25px 0 10px 0; border-top: 2px dashed var(--main-color); font-size: 9px; color: var(--text-muted); line-height: 1.6; transition: border-color 0.3s;">
                 &copy; 2026 LAKSHMAN NARAIN RAGUBATHY. ALL RIGHTS RESERVED.
             </footer>
 

@@ -29,7 +29,7 @@ function initThreeJSBackground() {
     const colorsArray = new Float32Array(particlesCount * 3);
     
     // Theme colors: hot pink and cyan
-    const color1 = new THREE.Color('#ff007f');
+    const color1 = new THREE.Color('#ff00ff');
     const color2 = new THREE.Color('#00d4ff');
 
     for(let i = 0; i < particlesCount * 3; i+=3) {

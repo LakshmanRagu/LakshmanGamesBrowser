@@ -131,9 +131,12 @@
             const savedRGB = Storage.load('rgbMode');
             const isRGBActive = savedRGB && JSON.parse(savedRGB);
             if (!isRGBActive) {
-                const color = Storage.load('themeColor') || '#ff007f';
+                const color = Storage.load('themeColor') || '#ff00ff';
                 setTimeout(() => setThemeColor(color, null, true), 100);
             }
+
+            const bgColor = Storage.load('bgColor') || '#0f172a';
+            setTimeout(() => setBgColor(bgColor, null, true), 100);
         } catch (e) { console.warn("Storage restricted, using in-memory fallbacks."); }
         // #endregion
     
@@ -519,6 +522,45 @@
             saveState('themeColor', hex);
         }
 
+        function setBgColor(hex, element, isInit = false) {
+            document.documentElement.style.setProperty('--bg-color', hex);
+            
+            // Update UI swatches for bg palette
+            document.querySelectorAll('#bg-palette .color-swatch').forEach(sw => sw.classList.remove('active'));
+            const bgPickerBtn = document.getElementById('bg-color-picker-btn');
+            if (bgPickerBtn) bgPickerBtn.classList.remove('active');
+
+            if (element) {
+                element.classList.add('active');
+            } else if (isInit) {
+                let foundSwatch = false;
+                document.querySelectorAll('#bg-palette .color-swatch').forEach(sw => {
+                    // Match rgb strings or hex
+                    if (sw.style.backgroundColor === hex || sw.style.backgroundColor.replace(/ /g, '') === hexToRgb(hex).split(',').map(c=>'rgb('+c).join(',') + ')') {
+                        // it's easier to just match rgb format
+                    }
+                    // Since browsers convert hex to rgb in style.backgroundColor:
+                    const rgb = hexToRgb(hex);
+                    if (sw.style.backgroundColor === `rgb(${rgb.split(', ').join(', ')})`) {
+                        sw.classList.add('active');
+                        foundSwatch = true;
+                    }
+                });
+                if (!foundSwatch && bgPickerBtn) {
+                    bgPickerBtn.classList.add('active');
+                    const pickerInput = document.getElementById('bg-color-picker');
+                    if (pickerInput) pickerInput.value = hex;
+                }
+            } else {
+                if (bgPickerBtn) {
+                    bgPickerBtn.classList.add('active');
+                    const pickerInput = document.getElementById('bg-color-picker');
+                    if (pickerInput) pickerInput.value = hex;
+                }
+            }
+            saveState('bgColor', hex);
+        }
+
         function toggleVFX(type) {
             vfxConfig[type] = !vfxConfig[type];
 
@@ -727,7 +769,7 @@
                     ps.className = 'portal-star';
                     ps.style.left = Math.random() * 100 + '%';
                     ps.style.top = Math.random() * 100 + '%';
-                    const colors = ['#ff007f', '#00d4ff', '#ffffff', '#7b2fbe', '#9955ff'];
+                    const colors = ['#ff00ff', '#00d4ff', '#ffffff', '#7b2fbe', '#9955ff'];
                     ps.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                     const size = Math.random() * 3 + 1;
                     ps.style.width = size + 'px';
@@ -756,7 +798,7 @@
                     star.style.top = Math.random() * 100 + 'vh';
 
                     // Recreate the original color distribution relative to the selected theme:
-                    // 1. Theme Color (original: #ff007f magenta)
+                    // 1. Theme Color (original: #ff00ff magenta)
                     // 2. Complementary Accent (original: #00d4ff cyan, approx +220 deg)
                     // 3. White (original: #ffffff, 0% sat, 100% light)
                     // 4. Deep Purple shift (original: #7b2fbe, approx -58 deg)
@@ -837,5 +879,15 @@
             initEffects();
             initPortalStars();
             initDriftStars();
+
+            // Interactive portal tilt
+            document.addEventListener('mousemove', (e) => {
+                const portal = document.querySelector('.portal-grid');
+                if (portal && document.getElementById('view-about') && !document.getElementById('view-about').classList.contains('hidden')) {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+                    portal.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+                }
+            });
         };
         // #endregion// Three.js 3D Background Setup
