@@ -45,6 +45,7 @@
                 particles: true,
                 trail: true,
                 burst: true,
+                webgl: true,
                 starCount: 150,     // Total background stars
                 particleCount: 35,  // Total floating particles
                 burstCount: 12      // Particle count per click-burst
@@ -71,7 +72,8 @@
             drift: CONFIG.vfx.drift !== undefined ? CONFIG.vfx.drift : true,
             particles: CONFIG.vfx.particles,
             trail: CONFIG.vfx.trail,
-            burst: CONFIG.vfx.burst
+            burst: CONFIG.vfx.burst,
+            webgl: CONFIG.vfx.webgl !== undefined ? CONFIG.vfx.webgl : true
         };
         let recentGames = [];
         let favoriteGames = [];
@@ -572,6 +574,10 @@
             if (type === 'stars') document.getElementById('stars-bg').style.display = vfxConfig.stars ? 'block' : 'none';
             if (type === 'drift') document.getElementById('drift-stars-bg').style.display = vfxConfig.drift ? 'block' : 'none';
             if (type === 'particles') document.getElementById('particles').style.display = vfxConfig.particles ? 'block' : 'none';
+            if (type === 'webgl') {
+                const canvas = document.getElementById('three-canvas');
+                if (canvas) canvas.style.display = vfxConfig.webgl ? 'block' : 'none';
+            }
 
             saveState('vfxConfig', vfxConfig);
         }
@@ -588,6 +594,8 @@
             const driftEl = document.getElementById('drift-stars-bg');
             if (driftEl) driftEl.style.display = vfxConfig.drift ? 'block' : 'none';
             document.getElementById('particles').style.display = vfxConfig.particles ? 'block' : 'none';
+            const webglEl = document.getElementById('three-canvas');
+            if (webglEl) webglEl.style.display = vfxConfig.webgl ? 'block' : 'none';
         }
 
         function saveState(key, data) {

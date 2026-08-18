@@ -57,7 +57,7 @@
 - **🔍 Instant Real-Time Search**: Sub-millisecond title and tag search filtering across your entire games library.
 - **⭐ Library Management**: Toggle favorites, browse categorized sections (Browser vs. Downloadable), and track recently played games.
 - **🔮 Dynamic Thumbnail Auto-Resolver**: Intelligent fallback scraper that queries OpenGraph and page metadata through CORS proxies when thumbnails aren't pre-defined.
-- **🎛️ System Preferences Control Center**: Granular toggles for void stars, drifting starfields, Ender embers, cursor trails, click bursts, accent colors, and RGB wave speeds.
+- **🎛️ System Preferences Control Center**: Granular toggles for reactive stars, void stars, drifting starfields, Ender embers, cursor trails, click bursts, accent colors, custom background colors, and RGB wave speeds.
 - **🛡️ Sandbox-Proof Fallback Storage**: Seamless cascading storage (`localStorage` → `sessionStorage` → in-memory) preventing crashes in sandboxed iframe environments.
 - **📱 Fully Responsive Design**: Mobile-ready layout with slide-out navigation drawer and touch-friendly controls.
 
@@ -143,7 +143,7 @@ Lakshman Games Browser is engineered with zero runtime build step dependencies�
 | **Styling & FX** | CSS3 Custom Properties & Animations | Hardware-accelerated transitions, scanlines, and glow filters |
 | **3D Background** | [Three.js (r128)](https://threejs.org/) | WebGL particle simulation with dynamic mouse-parallax |
 | **Card Parallax** | [Vanilla-Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/) | Smooth 3D tilt physics and glare reflections |
-| **Typography** | Google Fonts (`Press Start 2P`, `Inter`) | Arcade retro 8-bit headers paired with modern UI body text |
+| **Typography** | Google Fonts (`Press Start 2P`) | Global arcade retro 8-bit typography across all UI elements |
 | **Icons** | [FontAwesome 6 Free/Pro](https://fontawesome.com/) | Consistent iconography for library controls and tags |
 | **Thumbnail Proxy** | AllOrigins API | Dynamic OpenGraph cover scraping for itch.io games |
 | **CI/CD Deployment**| GitHub Actions (`pages.yml`) | Automated static site deployment to GitHub Pages |
@@ -254,6 +254,7 @@ vfx: {
     particles: true,     // Enable/disable rising Ender embers
     trail: true,         // Enable/disable mouse sparkle trail
     burst: true,         // Enable/disable click radial burst
+    webgl: true,         // Enable/disable 3D Three.js universe
     starCount: 150,      // Number of stars rendered
     particleCount: 35,   // Number of floating particles
     burstCount: 12       // Sparks per click
@@ -297,19 +298,21 @@ graph TD
 ### Stored Keys
 - `recents`: Array of recently opened game IDs.
 - `favorites`: Array of user-starred game IDs.
-- `vfxConfig`: Toggle states for stars, drift, embers, trail, and burst.
+- `vfxConfig`: Toggle states for reactive stars, void stars, drift, embers, trail, and burst.
 - `rgbMode`: Boolean active state and current wave speed.
 - `themeColor`: Active hex accent color string.
+- `bgColor`: Active hex background color string.
 
 ---
 
 ## 🌌 Minecraft End Portal Gateway
 
-In the **About Me** view, social and contact links are framed within an animated pixel-art **Minecraft End Portal**:
+In the **About Me** view, social and contact links are framed within an animated pixel-art **Minecraft End Portal** featuring interactive 3D parallax:
 
 - **12 Animated Eyes of Ender**: Pulsing ocular frames enclosing the central portal void.
-- **Cosmic Void Texture**: Multi-layered animated nebula background.
-- **Direct Portal Jump Buttons**:
+- **Interactive Mouse Swivel**: The entire portal structure responds and tilts in 3D space based on your mouse coordinates.
+- **Cosmic Void Texture**: Multi-layered animated nebula background that dynamically shifts its ambient radial glow to match your chosen UI theme color.
+- **Glistening Portal Jump Buttons**:
   - 🎮 [itch.io Arcade Profile](https://lakshmanragu.itch.io/)
   - 🎨 [ArtStation 3D Portfolio](https://www.artstation.com/lakshmanragu)
   - ✉️ [Direct Email Contact](mailto:lakshmannarainragubathy@gmail.com)
