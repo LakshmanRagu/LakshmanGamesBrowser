@@ -764,7 +764,7 @@
             if (portalVoid) {
                 // Clear any existing stars
                 portalVoid.querySelectorAll('.portal-star').forEach(el => el.remove());
-                for (let i = 0; i < 75; i++) {
+                for (let i = 0; i < 150; i++) {
                     const ps = document.createElement('div');
                     ps.className = 'portal-star';
                     ps.style.left = Math.random() * 100 + '%';
